@@ -1,0 +1,47 @@
+public class DrawChecker {
+
+    // UC10: Check if the game is a draw
+    public static boolean isDraw(char[][] board) {
+
+        // Traverse entire board
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+
+                // If any empty cell exists → not a draw
+                if (board[row][col] == ' ') {
+                    return false;
+                }
+            }
+        }
+
+        // No empty cells found → draw
+        return true;
+    }
+
+    // Optional helper to print board
+    public static void printBoard(char[][] board) {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(board[i][0] + " | " + board[i][1] + " | " + board[i][2]);
+            if (i < 2) System.out.println("--+---+--");
+        }
+        System.out.println();
+    }
+
+    // Test example
+    public static void main(String[] args) {
+
+        char[][] board = {
+            {'X', 'O', 'X'},
+            {'X', 'O', 'O'},
+            {'O', 'X', 'X'}
+        };
+
+        printBoard(board);
+
+        if (isDraw(board)) {
+            System.out.println("Game is a DRAW 🤝");
+        } else {
+            System.out.println("Game still in progress");
+        }
+    }
+}
